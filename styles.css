@@ -1,0 +1,672 @@
+/* ==========================================================================
+   COMPOSANT : Menu Hamburger
+   Description : Styles pour le menu hamburger mobile
+   Utilisation : Ajouter la classe 'hamburger' à un bouton et les classes
+                 'hamburger-top', 'hamburger-middle', 'hamburger-bottom' aux spans
+   ========================================================================== */
+.hamburger {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    transition: all 0.25s;
+    position: relative;
+}
+
+.hamburger-top,
+.hamburger-middle,
+.hamburger-bottom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 24px;
+    height: 2px;
+    background: #000;
+    transform: rotate(0);
+    transition: all 0.5s;
+}
+
+.hamburger-middle {
+    transform: translateY(7px);
+}
+
+.hamburger-bottom {
+    transform: translateY(14px);
+}
+
+.open .hamburger-top {
+    transform: rotate(45deg) translateY(6px) translate(6px);
+}
+
+.open .hamburger-middle {
+    display: none;
+}
+
+.open .hamburger-bottom {
+    transform: rotate(-45deg) translateY(6px) translate(-6px);
+}
+
+/* ==========================================================================
+   COMPOSANT : Barres de compétences
+   Description : Styles pour les barres de progression des compétences
+   Utilisation : Ajouter la classe 'skill-bar' à un conteneur et 'skill-progress'
+                 à l'élément de progression
+   ========================================================================== */
+.skill-bar {
+    height: 8px;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .skill-bar {
+    background-color: #374151;
+}
+
+.skill-progress {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #3b82f6;
+}
+
+.dark .skill-progress {
+    background-color: #60a5fa;
+}
+
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: translateX(-100%);
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%);
+    }
+    50% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.skill-card:hover .skill-progress {
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+}
+
+.dark .skill-card:hover .skill-progress {
+    background: linear-gradient(90deg, #3b82f6, #93c5fd);
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+/* ==========================================================================
+   COMPOSANT : Cartes de projet
+   Description : Styles pour les cartes de projet avec effets de hover
+   Utilisation : Ajouter la classe 'project-card' à un conteneur de carte
+   ========================================================================== */
+.project-card {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover::after {
+    opacity: 1;
+}
+
+.project-card img {
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover img {
+    transform: scale(1.1);
+}
+
+/* ==========================================================================
+   COMPOSANT : Navigation
+   Description : Styles pour les liens de navigation avec effet de soulignement
+   Utilisation : Ajouter la classe 'nav-links' au conteneur de navigation
+   ========================================================================== */
+nav a {
+    position: relative;
+    padding: 0.5rem 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3b82f6;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.dark nav a::after {
+    background-color: #60a5fa;
+}
+
+/* ==========================================================================
+   COMPOSANT : Cartes de compétences
+   Description : Styles pour les cartes de compétences avec effets de hover
+   Utilisation : Ajouter la classe 'skill-card' à un conteneur de carte
+   ========================================================================== */
+.skill-card {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    transform-origin: center;
+    background-color: #f9fafb;
+}
+
+.dark .skill-card {
+    background-color: #1f2937;
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.05), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .skill-card::before {
+    background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+}
+
+.skill-card:hover::before {
+    transform: translateX(100%);
+}
+
+.skill-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.dark .skill-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card .text-blue-600 {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
+}
+
+.skill-card:hover .text-blue-600 {
+    transform: scale(1.1) rotate(3deg);
+    color: #2563eb;
+}
+
+.dark .skill-card:hover .text-blue-600 {
+    color: #60a5fa;
+}
+
+/* Effets spécifiques pour chaque icône de compétence */
+.skill-card:nth-child(1) .text-blue-600 i { /* JavaScript */
+    color: #f7df1e;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:nth-child(2) .text-blue-600 i { /* CSS */
+    color: #264de4;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:nth-child(3) .text-blue-600 i { /* Backend */
+    color: #68a063;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:nth-child(4) .text-blue-600 i { /* Responsive */
+    color: #ff6b6b;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:nth-child(5) .text-blue-600 i { /* SEO */
+    color: #4a90e2;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-card:nth-child(6) .text-blue-600 i { /* Git */
+    color: #f05032;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Styles du texte */
+.skill-card h3 {
+    color: #1f2937;
+    transition: color 0.3s ease;
+}
+
+.dark .skill-card h3 {
+    color: #f3f4f6;
+}
+
+.skill-card p {
+    color: #4b5563;
+    transition: color 0.3s ease;
+}
+
+.dark .skill-card p {
+    color: #9ca3af;
+}
+
+/* ==========================================================================
+   COMPOSANT : Boutons
+   Description : Styles pour les boutons avec effet de brillance au hover
+   Utilisation : Ajouter la classe 'btn-hover' à un bouton
+   ========================================================================== */
+.btn-hover {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+.btn-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-hover:hover::before {
+    left: 100%;
+}
+
+.btn-hover:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.dark .btn-hover:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   COMPOSANT : Icônes sociales
+   Description : Styles pour les icônes de réseaux sociaux
+   Utilisation : Ajouter la classe 'social-icon' à un lien contenant une icône
+   ========================================================================== */
+.social-icon {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
+}
+
+.social-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-icon:hover::before {
+    transform: translateX(100%);
+}
+
+.social-icon:hover {
+    transform: translateY(-5px) rotate(5deg);
+    color: #3b82f6;
+}
+
+.dark .social-icon:hover {
+    color: #60a5fa;
+}
+
+/* ==========================================================================
+   COMPOSANT : Navigation active
+   Description : Style pour l'élément de navigation actif
+   Utilisation : Ajouter la classe 'active' à l'élément de navigation actif
+   ========================================================================== */
+.active {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   COMPOSANT : Mode Sombre
+   Description : Styles pour le mode sombre
+   Utilisation : Les classes dark: sont appliquées automatiquement
+   ========================================================================== */
+
+/* Couleurs de base pour le mode sombre */
+.dark {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #a0aec0;
+}
+
+/* Styles spécifiques pour le mode sombre */
+.dark body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.dark .bg-white {
+    background-color: var(--bg-secondary);
+}
+
+.dark .bg-gray-50 {
+    background-color: var(--bg-primary);
+}
+
+.dark .text-gray-600,
+.dark .text-gray-700 {
+    color: var(--text-secondary);
+}
+
+.dark .bg-gray-900 {
+    background-color: #111111;
+}
+
+.dark .border-gray-800 {
+    border-color: #2d2d2d;
+}
+
+.dark .hamburger-top,
+.dark .hamburger-middle,
+.dark .hamburger-bottom {
+    background-color: var(--text-primary);
+}
+
+/* Transitions fluides pour le changement de thème */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bg-white, .bg-gray-50, .bg-gray-900 {
+    transition: background-color 0.3s ease;
+}
+
+.text-gray-600, .text-gray-700 {
+    transition: color 0.3s ease;
+}
+
+/* ==========================================================================
+   COMPOSANT : Cartes de contact
+   Description : Styles pour les cartes de coordonnées
+   Utilisation : Ajouter la classe 'contact-card' à un conteneur de coordonnées
+   ========================================================================== */
+.contact-card {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dark .contact-card {
+    background-color: #1f2937;
+}
+
+.contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.contact-card:hover::before {
+    transform: translateX(100%);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dark .contact-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.icon-wrapper {
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f3f4f6;
+    border-radius: 0.75rem;
+    margin-right: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dark .icon-wrapper {
+    background-color: #374151;
+}
+
+.contact-card:hover .icon-wrapper {
+    background-color: #e5e7eb;
+    transform: scale(1.1);
+}
+
+.dark .contact-card:hover .icon-wrapper {
+    background-color: #4b5563;
+}
+
+/* Effets spécifiques pour chaque icône */
+.icon-wrapper i {
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Email */
+.contact-card:nth-child(1) .icon-wrapper i {
+    color: #3b82f6;
+}
+
+.contact-card:nth-child(1):hover .icon-wrapper i {
+    color: #2563eb;
+    transform: scale(1.2) rotate(5deg);
+}
+
+/* LinkedIn */
+.contact-card:nth-child(2) .icon-wrapper i {
+    color: #0a66c2;
+}
+
+.contact-card:nth-child(2):hover .icon-wrapper i {
+    color: #004182;
+    transform: scale(1.2) rotate(-5deg);
+}
+
+/* GitHub */
+.contact-card:nth-child(3) .icon-wrapper i {
+    color: #333;
+}
+
+.dark .contact-card:nth-child(3) .icon-wrapper i {
+    color: #fff;
+}
+
+.contact-card:nth-child(3):hover .icon-wrapper i {
+    color: #000;
+    transform: scale(1.2) rotate(5deg);
+}
+
+.dark .contact-card:nth-child(3):hover .icon-wrapper i {
+    color: #fff;
+}
+
+/* Localisation */
+.contact-card:nth-child(4) .icon-wrapper i {
+    color: #ef4444;
+}
+
+.contact-card:nth-child(4):hover .icon-wrapper i {
+    color: #dc2626;
+    transform: scale(1.2) rotate(-5deg);
+}
+
+/* Effet de pulsation sur les icônes */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.contact-card:hover .icon-wrapper i {
+    animation: pulse 1.5s infinite;
+}
+
+/* ==========================================================================
+   EFFETS DE HOVER GÉNÉRAUX
+   ========================================================================== */
+
+/* Liens du footer */
+footer a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+footer a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+}
+
+footer a:hover::after {
+    width: 100%;
+}
+
+/* Images de projets */
+.project-image {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-image:hover::after {
+    opacity: 1;
+}
+
+.project-image:hover {
+    transform: scale(1.05);
+}
+
+/* Transitions globales */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* ==========================================================================
+   SECTION HERO
+   ========================================================================== */
+.hero-text {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+}
+
+.hero-text:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dark .hero-text:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+#hero {
+    position: relative;
+    overflow: hidden;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#hero:hover::before {
+    opacity: 1;
+} 
