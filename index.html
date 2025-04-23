@@ -6,241 +6,75 @@
          ========================================================================== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio de Luther Brailleur, Développeur Full Stack créatif">
+    <meta name="theme-color" content="#3b82f6">
     <title>Luther Brailleur | Développeur Créatif</title>
     
     <!-- ==========================================================================
          LIENS VERS LES RESSOURCES EXTERNES
          ========================================================================== -->
-    <!-- Tailwind CSS via CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS via CDN avec chargement différé -->
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <!-- Font Awesome avec chargement optimisé -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
     <!-- Feuille de style personnalisée -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- ==========================================================================
-         STYLES INLINE POUR LES COMPOSANTS SPÉCIFIQUES
-         ========================================================================== -->
-    <style>
-        /* Styles pour le menu hamburger mobile */
-        .hamburger {
-            cursor: pointer;
-            width: 24px;
-            height: 24px;
-            transition: all 0.25s;
-            position: relative;
-        }
-        
-        .hamburger-top,
-        .hamburger-middle,
-        .hamburger-bottom {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 24px;
-            height: 2px;
-            background: #000;
-            transform: rotate(0);
-            transition: all 0.5s;
-        }
-        
-        .hamburger-middle {
-            transform: translateY(7px);
-        }
-        
-        .hamburger-bottom {
-            transform: translateY(14px);
-        }
-        
-        .open .hamburger-top {
-            transform: rotate(45deg) translateY(6px) translate(6px);
-        }
-        
-        .open .hamburger-middle {
-            display: none;
-        }
-        
-        .open .hamburger-bottom {
-            transform: rotate(-45deg) translateY(6px) translate(-6px);
-        }
-        
-        .nav-links {
-            transition: all 0.5s ease-out;
-        }
-        
-        .skill-bar {
-            height: 8px;
-            background-color: #e5e7eb;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background-color: #3b82f6;
-            border-radius: 4px;
-            transition: width 1s ease-in-out;
-        }
-        
-        /* Effets de hover améliorés */
-        .project-card {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-        }
-        
-        .project-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .project-card:hover::after {
-            opacity: 1;
-        }
-        
-        .project-card img {
-            transition: transform 0.5s ease;
-        }
-        
-        .project-card:hover img {
-            transform: scale(1.1);
-        }
-        
-        /* Effets de hover pour les liens de navigation */
-        nav a {
-            position: relative;
-            padding: 0.5rem 0;
-        }
-        
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: #3b82f6;
-            transition: width 0.3s ease;
-        }
-        
-        nav a:hover::after {
-            width: 100%;
-        }
-        
-        /* Effets de hover pour les cartes de compétences */
-        .skill-card {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .skill-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .skill-card:hover .text-blue-600 {
-            transform: scale(1.1);
-            transition: transform 0.3s ease;
-        }
-        
-        /* Effets de hover pour les boutons */
-        .btn-hover {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-hover::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: 0.5s;
-        }
-        
-        .btn-hover:hover::before {
-            left: 100%;
-        }
-        
-        .btn-hover:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Effets de hover pour les icônes sociales */
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            transform: translateY(-3px) rotate(5deg);
-            color: #3b82f6;
-        }
-        
-        .active {
-            color: #3b82f6;
-            font-weight: 600;
-        }
-    </style>
 </head>
 
-<body class="font-sans bg-gray-50 text-gray-800">
+<body class="font-sans">
     <!-- ==========================================================================
          EN-TÊTE (HEADER)
          Description : Barre de navigation fixe en haut de la page
          ========================================================================== -->
-    <header class="bg-white shadow-sm fixed w-full z-50">
+    <header class="bg-white shadow-sm fixed w-full z-50" role="banner">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Logo -->
-            <a href="#" class="text-2xl font-bold text-blue-600">LutherBrailleur</a>
+            <!-- Logo avec attribut ARIA -->
+            <a href="#" class="text-2xl font-bold text-primary" aria-label="Accueil">
+                LutherBrailleur
+            </a>
             
-            <!-- Navigation Desktop -->
-            <nav class="hidden md:flex space-x-8">
-                <a href="#hero" class="hover:text-blue-600 transition">Accueil</a>
-                <a href="#skills" class="hover:text-blue-600 transition">Compétences</a>
-                <a href="#projects" class="hover:text-blue-600 transition">Projets</a>
-                <a href="#testimonials" class="hover:text-blue-600 transition">Témoignages</a>
-                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+            <!-- Navigation Desktop avec attributs ARIA -->
+            <nav class="hidden md:flex space-x-8" role="navigation" aria-label="Navigation principale">
+                <a href="#hero" class="hover:text-primary transition-all" aria-current="page">Accueil</a>
+                <a href="#skills" class="hover:text-primary transition-all">Compétences</a>
+                <a href="#projects" class="hover:text-primary transition-all">Projets</a>
+                <a href="#testimonials" class="hover:text-primary transition-all">Témoignages</a>
+                <a href="#contact" class="hover:text-primary transition-all">Contact</a>
             </nav>
             
-            <!-- Bouton de thème (clair/sombre) -->
-            <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                <i class="fas fa-sun text-yellow-500 dark:hidden"></i>
-                <i class="fas fa-moon text-blue-400 hidden dark:block"></i>
+            <!-- Bouton de thème avec attributs ARIA -->
+            <button id="theme-toggle" 
+                    class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all"
+                    aria-label="Basculer le thème clair/sombre">
+                <i class="fas fa-sun text-yellow-500 dark:hidden" aria-hidden="true"></i>
+                <i class="fas fa-moon text-blue-400 hidden dark:block" aria-hidden="true"></i>
             </button>
             
-            <!-- Menu Hamburger Mobile -->
+            <!-- Menu Hamburger Mobile avec attributs ARIA -->
             <div class="md:hidden">
-                <button id="menu-btn" class="hamburger focus:outline-none">
-                    <span class="hamburger-top"></span>
-                    <span class="hamburger-middle"></span>
-                    <span class="hamburger-bottom"></span>
+                <button id="menu-btn" 
+                        class="hamburger focus:outline-none"
+                        aria-label="Ouvrir le menu"
+                        aria-expanded="false"
+                        aria-controls="menu">
+                    <span class="hamburger-top" aria-hidden="true"></span>
+                    <span class="hamburger-middle" aria-hidden="true"></span>
+                    <span class="hamburger-bottom" aria-hidden="true"></span>
                 </button>
             </div>
         </div>
         
-        <!-- Menu Mobile -->
-        <div id="menu" class="hidden md:hidden bg-white absolute w-full px-6 pb-4">
+        <!-- Menu Mobile avec attributs ARIA -->
+        <div id="menu" 
+             class="hidden md:hidden bg-white absolute w-full px-6 pb-4"
+             role="navigation"
+             aria-label="Menu mobile">
             <div class="flex flex-col space-y-4">
-                <a href="#hero" class="hover:text-blue-600 transition">Accueil</a>
-                <a href="#skills" class="hover:text-blue-600 transition">Compétences</a>
-                <a href="#projects" class="hover:text-blue-600 transition">Projets</a>
-                <a href="#testimonials" class="hover:text-blue-600 transition">Témoignages</a>
-                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+                <a href="#hero" class="hover:text-primary transition-all" aria-current="page">Accueil</a>
+                <a href="#skills" class="hover:text-primary transition-all">Compétences</a>
+                <a href="#projects" class="hover:text-primary transition-all">Projets</a>
+                <a href="#testimonials" class="hover:text-primary transition-all">Témoignages</a>
+                <a href="#contact" class="hover:text-primary transition-all">Contact</a>
             </div>
         </div>
     </header>
@@ -249,17 +83,19 @@
          SECTION HÉRO
          Description : Section d'introduction avec le titre principal
          ========================================================================== -->
-    <section id="hero" class="pt-32 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50">
+    <section id="hero" class="pt-32 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50" role="region" aria-label="Présentation">
         <div class="container mx-auto px-6">
             <div class="text-center">
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 hero-text">Luther BRAILLEUR</h1>
-                <h2 class="text-3xl md:text-4xl text-blue-600 mb-8 hero-text">Développeur Full Stack</h2>
+                <h2 class="text-3xl md:text-4xl text-primary mb-8 hero-text">Développeur Full Stack</h2>
                 <p class="text-xl md:text-2xl mb-12 text-gray-600 max-w-3xl mx-auto hero-text">
                     Je crée des expériences web modernes et performantes avec une attention particulière aux détails.
                 </p>
                 <div class="flex justify-center">
-                    <a href="#" class="btn-hover bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium transition inline-flex items-center text-lg">
-                        <i class="fas fa-download mr-2"></i>
+                    <a href="#" 
+                       class="btn-hover bg-primary hover:bg-primary-hover text-white px-8 py-4 rounded-lg font-medium inline-flex items-center text-lg"
+                       aria-label="Télécharger mon CV">
+                        <i class="fas fa-download mr-2" aria-hidden="true"></i>
                         Télécharger mon CV
                     </a>
                 </div>
@@ -271,79 +107,79 @@
          SECTION COMPÉTENCES
          Description : Grille de compétences avec barres de progression
          ========================================================================== -->
-    <section id="skills" class="py-20 bg-white">
+    <section id="skills" class="py-20 bg-white" role="region" aria-label="Compétences">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-16">Mes Compétences</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Compétence 1 : JavaScript -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fab fa-js"></i>
+                <div class="card">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fab fa-js" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">JavaScript</h3>
                     <p class="text-gray-600 mb-4">Développement d'applications interactives avec Javascript.</p>
-                    <div class="skill-bar">
+                    <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
                         <div class="skill-progress" style="width: 90%"></div>
                     </div>
                 </div>
                 
                 <!-- Compétence 2 : CSS -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fab fa-css3-alt"></i>
+                <div class="card">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fab fa-css3-alt" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">CSS & Design</h3>
                     <p class="text-gray-600 mb-4">Création d'interfaces utilisateur modernes avec Tailwind CSS.</p>
-                    <div class="skill-bar">
+                    <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                         <div class="skill-progress" style="width: 85%"></div>
                     </div>
                 </div>
                 
                 <!-- Compétence 3 : Backend -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fas fa-server"></i>
+                <div class="card">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-server" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Backend</h3>
                     <p class="text-gray-600 mb-4">Développement d'API RESTful avec Node.js, Express et MongoDB.</p>
-                    <div class="skill-bar">
+                    <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                         <div class="skill-progress" style="width: 80%"></div>
                     </div>
                 </div>
                 
                 <!-- Compétence 4 : Responsive Design -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fas fa-mobile-alt"></i>
+                <div class="card">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-mobile-alt" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Responsive Design</h3>
                     <p class="text-gray-600 mb-4">Sites web optimisés pour tous les appareils avec une approche mobile-first.</p>
-                    <div class="skill-bar">
+                    <div class="skill-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
                         <div class="skill-progress" style="width: 95%"></div>
                     </div>
                 </div>
                 
                 <!-- Compétence 5 : SEO -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fas fa-search"></i>
+                <div class="card">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-search" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">SEO</h3>
                     <p class="text-gray-600 mb-4">Optimisation pour les moteurs de recherche et meilleures pratiques.</p>
-                    <div class="skill-bar">
+                    <div class="skill-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                         <div class="skill-progress" style="width: 75%"></div>
                     </div>
                 </div>
                 
                 <!-- Compétence 6 : Git -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
-                    <div class="text-blue-600 text-4xl mb-4">
-                        <i class="fas fa-code-branch"></i>
+                <div class="card">
+                    <div class="text-primary text-4xl mb-4">
+                        <i class="fas fa-code-branch" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-xl font-semibold mb-2">Git & DevOps</h3>
                     <p class="text-gray-600 mb-4">Gestion de versions et déploiement continu avec GitHub Actions.</p>
-                    <div class="skill-bar">
+                    <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                         <div class="skill-progress" style="width: 85%"></div>
                     </div>
                 </div>
@@ -355,19 +191,19 @@
          SECTION PROJETS
          Description : Section présentant les projets (en construction)
          ========================================================================== -->
-    <section id="projects" class="py-20 bg-gray-50">
+    <section id="projects" class="py-20 bg-gray-50" role="region" aria-label="Projets">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-16">Mes Projets</h2>
             
             <div class="max-w-3xl mx-auto text-center">
-                <div class="bg-white p-12 rounded-xl shadow-md">
-                    <div class="text-6xl text-blue-600 mb-6">
-                        <i class="fas fa-hard-hat"></i>
+                <div class="card">
+                    <div class="text-6xl text-primary mb-6">
+                        <i class="fas fa-hard-hat" aria-hidden="true"></i>
                     </div>
                     <h3 class="text-2xl font-semibold mb-4">En cours de construction</h3>
                     <p class="text-gray-600 mb-6">Je travaille actuellement sur de nouveaux projets passionnants. Revenez bientôt pour découvrir mes réalisations !</p>
-                    <div class="animate-pulse text-blue-600">
-                        <i class="fas fa-tools text-4xl"></i>
+                    <div class="animate-pulse text-primary">
+                        <i class="fas fa-tools text-4xl" aria-hidden="true"></i>
                     </div>
                 </div>
             </div>
@@ -378,17 +214,20 @@
          SECTION TÉMOIGNAGES
          Description : Grille de témoignages clients
          ========================================================================== -->
-    <section id="testimonials" class="py-20 bg-white">
+    <section id="testimonials" class="py-20 bg-white" role="region" aria-label="Témoignages">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-4">Témoignages</h2>
             <p class="text-gray-500 text-center mb-16 italic">* Ces témoignages sont fictifs et servent d'exemple</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Témoignage 1 -->
-                <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
+                <div class="card">
                     <div class="flex items-center mb-6">
                         <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
                              alt="Sophie Dubois" 
+                             loading="lazy"
+                             width="64"
+                             height="64"
                              class="w-16 h-16 rounded-full object-cover mr-4">
                         <div>
                             <h4 class="font-semibold">Sophie Dubois</h4>
@@ -399,10 +238,13 @@
                 </div>
                 
                 <!-- Témoignage 2 -->
-                <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
+                <div class="card">
                     <div class="flex items-center mb-6">
                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
                              alt="Thomas Leroy" 
+                             loading="lazy"
+                             width="64"
+                             height="64"
                              class="w-16 h-16 rounded-full object-cover mr-4">
                         <div>
                             <h4 class="font-semibold">Thomas Leroy</h4>
@@ -413,10 +255,13 @@
                 </div>
                 
                 <!-- Témoignage 3 -->
-                <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
+                <div class="card">
                     <div class="flex items-center mb-6">
                         <img src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
                              alt="Émilie Laurent" 
+                             loading="lazy"
+                             width="64"
+                             height="64"
                              class="w-16 h-16 rounded-full object-cover mr-4">
                         <div>
                             <h4 class="font-semibold">Émilie Laurent</h4>
@@ -433,31 +278,31 @@
          SECTION FAQ
          Description : Questions fréquemment posées
          ========================================================================== -->
-    <section id="faq" class="py-20 bg-gray-50">
+    <section id="faq" class="py-20 bg-gray-50" role="region" aria-label="Questions fréquemment posées">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-16">Questions Fréquentes</h2>
             
             <div class="max-w-3xl mx-auto space-y-6">
                 <!-- FAQ Item 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="card">
                     <h3 class="text-xl font-semibold mb-3">Quels types de projets acceptez-vous ?</h3>
                     <p class="text-gray-600">Je travaille sur une variété de projets web, des sites vitrines aux applications complexes. Je me spécialise particulièrement dans les solutions JavaScript full-stack, mais j'ai aussi de l'expérience avec d'autres technologies.</p>
                 </div>
                 
                 <!-- FAQ Item 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="card">
                     <h3 class="text-xl font-semibold mb-3">Quel est votre processus de travail ?</h3>
                     <p class="text-gray-600">Je commence par une consultation approfondie pour comprendre vos besoins, puis je crée un plan détaillé. Après validation, je développe par itérations avec des retours réguliers. Chaque projet inclut des tests rigoureux avant le déploiement.</p>
                 </div>
                 
                 <!-- FAQ Item 3 -->
-                <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="card">
                     <h3 class="text-xl font-semibold mb-3">Quels sont vos tarifs ?</h3>
                     <p class="text-gray-600">Mes tarifs varient selon la complexité et la durée du projet. Je propose des forfaits pour les projets définis et des taux horaires pour les travaux continus. Contactez-moi pour un devis personnalisé adapté à votre budget.</p>
                 </div>
                 
                 <!-- FAQ Item 4 -->
-                <div class="bg-white p-6 rounded-xl shadow-sm">
+                <div class="card">
                     <h3 class="text-xl font-semibold mb-3">Fournissez-vous un support après livraison ?</h3>
                     <p class="text-gray-600">Oui, tous mes projets incluent une période de garantie de 30 jours pour corriger tout problème. Je propose également des contrats de maintenance mensuels pour les mises à jour et le support continu.</p>
                 </div>
@@ -469,7 +314,7 @@
          SECTION CONTACT
          Description : Informations de contact et coordonnées
          ========================================================================== -->
-    <section id="contact" class="py-20 bg-white dark:bg-gray-900">
+    <section id="contact" class="py-20 bg-white dark:bg-gray-900" role="region" aria-label="Contact">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">Contactez-moi</h2>
             
@@ -481,40 +326,53 @@
                         <!-- Carte Email -->
                         <div class="contact-card group">
                             <div class="icon-wrapper">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h4 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Email</h4>
-                                <a href="mailto:luther.brailleur.dev@gmail.com" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">luther.brailleur.dev@gmail.com</a>
+                                <a href="mailto:luther.brailleur.dev@gmail.com" 
+                                   class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all">
+                                    luther.brailleur.dev@gmail.com
+                                </a>
                             </div>
                         </div>
                         
                         <!-- Carte LinkedIn -->
                         <div class="contact-card group">
                             <div class="icon-wrapper">
-                                <i class="fab fa-linkedin"></i>
+                                <i class="fab fa-linkedin" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h4 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">LinkedIn</h4>
-                                <a href="https://linkedin.com" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">linkedin.com/in/votreprofil</a>
+                                <a href="https://linkedin.com" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all">
+                                    linkedin.com/in/votreprofil
+                                </a>
                             </div>
                         </div>
                         
                         <!-- Carte GitHub -->
                         <div class="contact-card group">
                             <div class="icon-wrapper">
-                                <i class="fab fa-github"></i>
+                                <i class="fab fa-github" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h4 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">GitHub</h4>
-                                <a href="https://github.com/LutherNebulax" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">github.com/LutherNebulax</a>
+                                <a href="https://github.com/LutherNebulax" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer"
+                                   class="text-gray-600 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-all">
+                                    github.com/LutherNebulax
+                                </a>
                             </div>
                         </div>
                         
                         <!-- Carte Localisation -->
                         <div class="contact-card group">
                             <div class="icon-wrapper">
-                                <i class="fas fa-map-marker-alt"></i>
+                                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                             </div>
                             <div>
                                 <h4 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Localisation</h4>
@@ -531,7 +389,7 @@
          PIED DE PAGE (FOOTER)
          Description : Informations de copyright et liens supplémentaires
          ========================================================================== -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="bg-gray-900 text-white py-12" role="contentinfo">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
@@ -540,19 +398,27 @@
                 </div>
                 
                 <div class="flex space-x-6">
-                    <a href="#" class="social-icon text-gray-400 hover:text-white transition">
-                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                    <a href="#" 
+                       class="social-icon text-gray-400 hover:text-white"
+                       aria-label="Twitter">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
                     </a>
-                    <a href="#" class="social-icon text-gray-400 hover:text-white transition">
-                        <i class="fab fa-linkedin text-xl"></i>
+                    <a href="#" 
+                       class="social-icon text-gray-400 hover:text-white"
+                       aria-label="LinkedIn">
+                        <i class="fab fa-linkedin text-xl" aria-hidden="true"></i>
                     </a>
-                    <a href="#" class="social-icon text-gray-400 hover:text-white transition">
-                        <i class="fab fa-github text-xl"></i>
+                    <a href="#" 
+                       class="social-icon text-gray-400 hover:text-white"
+                       aria-label="GitHub">
+                        <i class="fab fa-github text-xl" aria-hidden="true"></i>
                     </a>
-                    <a href="#" class="social-icon text-gray-400 hover:text-white transition">
-                        <i class="fab fa-dribbble text-xl"></i>
+                    <a href="#" 
+                       class="social-icon text-gray-400 hover:text-white"
+                       aria-label="Dribbble">
+                        <i class="fab fa-dribbble text-xl" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
@@ -563,9 +429,9 @@
                 <p class="text-gray-400 text-sm mb-4 md:mb-0">© 2023 Luther Brailleur. Tous droits réservés.</p>
                 
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Mentions légales</a>
-                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Politique de confidentialité</a>
-                    <a href="#" class="text-gray-400 hover:text-white text-sm transition">Conditions d'utilisation</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-all">Mentions légales</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-all">Politique de confidentialité</a>
+                    <a href="#" class="text-gray-400 hover:text-white text-sm transition-all">Conditions d'utilisation</a>
                 </div>
             </div>
         </div>
@@ -575,6 +441,6 @@
          SCRIPTS
          Description : Fichiers JavaScript externes
          ========================================================================== -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>

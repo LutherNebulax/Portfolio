@@ -1,14 +1,66 @@
 /* ==========================================================================
-   COMPOSANT : Menu Hamburger
-   Description : Styles pour le menu hamburger mobile
-   Utilisation : Ajouter la classe 'hamburger' à un bouton et les classes
-                 'hamburger-top', 'hamburger-middle', 'hamburger-bottom' aux spans
+   VARIABLES CSS
+   ========================================================================== */
+:root {
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --bg-light: #f9fafb;
+    --bg-dark: #111827;
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   STYLES DE BASE
+   ========================================================================== */
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   COMPOSANTS COMMUNS
+   ========================================================================== */
+/* Carte */
+.card {
+    background-color: var(--bg-light);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: var(--transition-base);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Barre de compétences */
+.skill-bar {
+    height: 8px;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    transition: width 1s ease-in-out;
+}
+
+/* ==========================================================================
+   MENU HAMBURGER
    ========================================================================== */
 .hamburger {
     cursor: pointer;
     width: 24px;
     height: 24px;
-    transition: all 0.25s;
+    transition: var(--transition-base);
     position: relative;
 }
 
@@ -20,9 +72,9 @@
     left: 0;
     width: 24px;
     height: 2px;
-    background: #000;
+    background: var(--text-dark);
     transform: rotate(0);
-    transition: all 0.5s;
+    transition: var(--transition-base);
 }
 
 .hamburger-middle {
@@ -43,6 +95,108 @@
 
 .open .hamburger-bottom {
     transform: rotate(-45deg) translateY(6px) translate(-6px);
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-text {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+/* ==========================================================================
+   EFFETS DE HOVER
+   ========================================================================== */
+/* Boutons */
+.btn-hover {
+    position: relative;
+    overflow: hidden;
+    transition: var(--transition-base);
+}
+
+.btn-hover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-hover:hover::before {
+    left: 100%;
+}
+
+.btn-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Icônes sociales */
+.social-icon {
+    transition: var(--transition-base);
+}
+
+.social-icon:hover {
+    transform: translateY(-3px) rotate(5deg);
+    color: var(--primary-color);
+}
+
+/* ==========================================================================
+   MODE SOMBRE
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-dark: #f3f4f6;
+        --text-light: #9ca3af;
+        --bg-light: #111827;
+        --bg-dark: #1f2937;
+    }
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    .card {
+        padding: 1rem;
+    }
+    
+    .hero-text {
+        font-size: 2.5rem;
+    }
+}
+
+/* ==========================================================================
+   UTILITAIRES
+   ========================================================================== */
+.text-primary {
+    color: var(--primary-color);
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+.hover\:text-primary:hover {
+    color: var(--primary-hover);
+}
+
+.transition-all {
+    transition: var(--transition-base);
 }
 
 /* ==========================================================================
