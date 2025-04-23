@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <!-- ==========================================================================
+         MÉTA-INFORMATIONS
+         ========================================================================== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luther Brailleur | Développeur Créatif</title>
+    
+    <!-- ==========================================================================
+         LIENS VERS LES RESSOURCES EXTERNES
+         ========================================================================== -->
+    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome pour les icônes -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Feuille de style personnalisée -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- ==========================================================================
+         STYLES INLINE POUR LES COMPOSANTS SPÉCIFIQUES
+         ========================================================================== -->
     <style>
+        /* Styles pour le menu hamburger mobile */
         .hamburger {
             cursor: pointer;
             width: 24px;
@@ -182,13 +197,18 @@
         }
     </style>
 </head>
+
 <body class="font-sans bg-gray-50 text-gray-800">
-    <!-- Header -->
+    <!-- ==========================================================================
+         EN-TÊTE (HEADER)
+         Description : Barre de navigation fixe en haut de la page
+         ========================================================================== -->
     <header class="bg-white shadow-sm fixed w-full z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
             <a href="#" class="text-2xl font-bold text-blue-600">LutherBrailleur</a>
             
-            <!-- Desktop Navigation -->
+            <!-- Navigation Desktop -->
             <nav class="hidden md:flex space-x-8">
                 <a href="#hero" class="hover:text-blue-600 transition">Accueil</a>
                 <a href="#skills" class="hover:text-blue-600 transition">Compétences</a>
@@ -197,13 +217,13 @@
                 <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
             </nav>
             
-            <!-- Bouton thème -->
+            <!-- Bouton de thème (clair/sombre) -->
             <button id="theme-toggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                 <i class="fas fa-sun text-yellow-500 dark:hidden"></i>
                 <i class="fas fa-moon text-blue-400 hidden dark:block"></i>
             </button>
             
-            <!-- Mobile Hamburger Menu -->
+            <!-- Menu Hamburger Mobile -->
             <div class="md:hidden">
                 <button id="menu-btn" class="hamburger focus:outline-none">
                     <span class="hamburger-top"></span>
@@ -213,7 +233,7 @@
             </div>
         </div>
         
-        <!-- Mobile Menu -->
+        <!-- Menu Mobile -->
         <div id="menu" class="hidden md:hidden bg-white absolute w-full px-6 pb-4">
             <div class="flex flex-col space-y-4">
                 <a href="#hero" class="hover:text-blue-600 transition">Accueil</a>
@@ -224,14 +244,19 @@
             </div>
         </div>
     </header>
-
-    <!-- Hero Section -->
+    
+    <!-- ==========================================================================
+         SECTION HÉRO
+         Description : Section d'introduction avec le titre principal
+         ========================================================================== -->
     <section id="hero" class="pt-32 pb-20 bg-gradient-to-r from-blue-50 to-indigo-50">
         <div class="container mx-auto px-6">
             <div class="text-center">
                 <h1 class="text-5xl md:text-7xl font-bold mb-6 hero-text">Luther BRAILLEUR</h1>
                 <h2 class="text-3xl md:text-4xl text-blue-600 mb-8 hero-text">Développeur Full Stack</h2>
-                <p class="text-xl md:text-2xl mb-12 text-gray-600 max-w-3xl mx-auto hero-text">Je crée des expériences web modernes et performantes avec une attention particulière aux détails.</p>
+                <p class="text-xl md:text-2xl mb-12 text-gray-600 max-w-3xl mx-auto hero-text">
+                    Je crée des expériences web modernes et performantes avec une attention particulière aux détails.
+                </p>
                 <div class="flex justify-center">
                     <a href="#" class="btn-hover bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-medium transition inline-flex items-center text-lg">
                         <i class="fas fa-download mr-2"></i>
@@ -241,14 +266,17 @@
             </div>
         </div>
     </section>
-
-    <!-- Skills Section -->
+    
+    <!-- ==========================================================================
+         SECTION COMPÉTENCES
+         Description : Grille de compétences avec barres de progression
+         ========================================================================== -->
     <section id="skills" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-16">Mes Compétences</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Skill 1 -->
+                <!-- Compétence 1 : JavaScript -->
                 <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="text-blue-600 text-4xl mb-4">
                         <i class="fab fa-js"></i>
@@ -260,7 +288,7 @@
                     </div>
                 </div>
                 
-                <!-- Skill 2 -->
+                <!-- Compétence 2 : CSS -->
                 <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="text-blue-600 text-4xl mb-4">
                         <i class="fab fa-css3-alt"></i>
@@ -272,7 +300,7 @@
                     </div>
                 </div>
                 
-                <!-- Skill 3 -->
+                <!-- Compétence 3 : Backend -->
                 <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="text-blue-600 text-4xl mb-4">
                         <i class="fas fa-server"></i>
@@ -284,7 +312,7 @@
                     </div>
                 </div>
                 
-                <!-- Skill 4 -->
+                <!-- Compétence 4 : Responsive Design -->
                 <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="text-blue-600 text-4xl mb-4">
                         <i class="fas fa-mobile-alt"></i>
@@ -296,7 +324,7 @@
                     </div>
                 </div>
                 
-                <!-- Skill 5 -->
+                <!-- Compétence 5 : SEO -->
                 <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="text-blue-600 text-4xl mb-4">
                         <i class="fas fa-search"></i>
@@ -308,7 +336,7 @@
                     </div>
                 </div>
                 
-                <!-- Skill 6 -->
+                <!-- Compétence 6 : Git -->
                 <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition">
                     <div class="text-blue-600 text-4xl mb-4">
                         <i class="fas fa-code-branch"></i>
@@ -322,8 +350,11 @@
             </div>
         </div>
     </section>
-
-    <!-- Projects Section -->
+    
+    <!-- ==========================================================================
+         SECTION PROJETS
+         Description : Section présentant les projets (en construction)
+         ========================================================================== -->
     <section id="projects" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-16">Mes Projets</h2>
@@ -343,14 +374,17 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
+    <!-- ==========================================================================
+         SECTION TÉMOIGNAGES
+         Description : Grille de témoignages clients
+         ========================================================================== -->
     <section id="testimonials" class="py-20 bg-white">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-4">Témoignages</h2>
             <p class="text-gray-500 text-center mb-16 italic">* Ces témoignages sont fictifs et servent d'exemple</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
+                <!-- Témoignage 1 -->
                 <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
                     <div class="flex items-center mb-6">
                         <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" 
@@ -364,7 +398,7 @@
                     <p class="text-gray-700 italic">"Luther a transformé notre présence en ligne avec un site web qui a augmenté nos conversions de 40%. Son professionnalisme et sa créativité sont exceptionnels."</p>
                 </div>
                 
-                <!-- Testimonial 2 -->
+                <!-- Témoignage 2 -->
                 <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
                     <div class="flex items-center mb-6">
                         <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
@@ -378,7 +412,7 @@
                     <p class="text-gray-700 italic">"Le travail de Luther sur notre application mobile a été révolutionnaire. Il a su comprendre nos besoins et les traduire en une solution technique parfaite."</p>
                 </div>
                 
-                <!-- Testimonial 3 -->
+                <!-- Témoignage 3 -->
                 <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
                     <div class="flex items-center mb-6">
                         <img src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" 
@@ -395,7 +429,10 @@
         </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- ==========================================================================
+         SECTION FAQ
+         Description : Questions fréquemment posées
+         ========================================================================== -->
     <section id="faq" class="py-20 bg-gray-50">
         <div class="container mx-auto px-6">
             <h2 class="text-3xl font-bold text-center mb-16">Questions Fréquentes</h2>
@@ -427,8 +464,11 @@
             </div>
         </div>
     </section>
-
-    <!-- Contact Section -->
+    
+    <!-- ==========================================================================
+         SECTION CONTACT
+         Description : Informations de contact et coordonnées
+         ========================================================================== -->
     <section id="contact" class="py-20 bg-white dark:bg-gray-900">
         <div class="container mx-auto px-6">
             <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 dark:text-white">Contactez-moi</h2>
@@ -438,16 +478,18 @@
                     <h3 class="text-3xl font-semibold mb-12 text-center text-gray-800 dark:text-white">Coordonnées</h3>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Carte Email -->
                         <div class="contact-card group">
                             <div class="icon-wrapper">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div>
                                 <h4 class="text-xl font-semibold mb-2 text-gray-800 dark:text-white">Email</h4>
-                                <a href="mailto:contact@exemple.com" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">luther.brailleur.dev@gmail.com</a>
+                                <a href="mailto:luther.brailleur.dev@gmail.com" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">luther.brailleur.dev@gmail.com</a>
                             </div>
                         </div>
                         
+                        <!-- Carte LinkedIn -->
                         <div class="contact-card group">
                             <div class="icon-wrapper">
                                 <i class="fab fa-linkedin"></i>
@@ -458,6 +500,7 @@
                             </div>
                         </div>
                         
+                        <!-- Carte GitHub -->
                         <div class="contact-card group">
                             <div class="icon-wrapper">
                                 <i class="fab fa-github"></i>
@@ -468,6 +511,7 @@
                             </div>
                         </div>
                         
+                        <!-- Carte Localisation -->
                         <div class="contact-card group">
                             <div class="icon-wrapper">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -482,8 +526,11 @@
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
+    
+    <!-- ==========================================================================
+         PIED DE PAGE (FOOTER)
+         Description : Informations de copyright et liens supplémentaires
+         ========================================================================== -->
     <footer class="bg-gray-900 text-white py-12">
         <div class="container mx-auto px-6">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -523,7 +570,11 @@
             </div>
         </div>
     </footer>
-
+    
+    <!-- ==========================================================================
+         SCRIPTS
+         Description : Fichiers JavaScript externes
+         ========================================================================== -->
     <script src="script.js"></script>
 </body>
 </html>
